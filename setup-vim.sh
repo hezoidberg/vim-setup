@@ -37,9 +37,9 @@ install_plugins() {
     do
         echo "cloning --> $plugin"
         plugin_name_git=$(echo $plugin | grep -oP "[^\/]+$")
-        plugin_name="${plugin_name_git::-4}"
+        plugin_name="${plugin_name_git%????}"
         if [[ ! -d "$plugin_name" ]]; then
-        	git clone "$plugin"
+            git clone "$plugin"
         else
             cd "$plugin_name"
             git pull
